@@ -1,0 +1,45 @@
+@import "./normalize.css";
+
+:root {
+    --text-color: #666;
+    --highlight: #ff5777;
+    --tint-color: #ebc7ce;
+    --bgc: #f2f2f2;
+    --font-size: 14px;
+    --line-height: 1.5;
+}
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    user-select: none;
+}
+.clear-fix::after{
+    clear: both;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.clear-fix{
+    zoom: 1;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+a{
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+}
+span{
+    display: inline-block;
+}
