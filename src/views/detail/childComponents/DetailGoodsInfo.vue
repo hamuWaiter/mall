@@ -16,7 +16,9 @@
         <div class="service">
             <div class="serive-item" 
             v-for="(item,index) in goodsInfo.services" :key="index">
+            <div>
                 <img :src="item.icon" alt="">
+            </div>
                 <span>{{item.name}}</span>
             </div>
         </div>
@@ -46,7 +48,7 @@
 .detail-goods-info{
     padding: 0 4px;
     padding-bottom: 20px;
-    border-bottom: 6px solid #f2f2f2;
+    border-bottom: 6px solid #f4f4fb;
 }
 .title{
     margin: 10px 0;

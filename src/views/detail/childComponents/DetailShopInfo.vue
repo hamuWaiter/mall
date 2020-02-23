@@ -11,19 +11,29 @@
                     <p>总销量</p>
                 </div>
                 <div class="goods-num">
-                    <p>{{shopInfo.goodsCount}}</p>
-                <p>全部宝贝</p>
+                    <div>
+                        <p>{{shopInfo.goodsCount}}</p>
+                        <p>全部宝贝</p>
+                    </div>
                 </div>
             </div>
+            <span class="center"></span>
             <div class="right">
                 <div v-for="(item, index) in shopInfo.score" :key="index" class="shop-score">
                     <span>{{item.name}}</span>
                     <span>{{item.score}}</span>
-                    <span class="low-score" v-if="!item.isBetter">低</span>
-                    <span class="high-score" v-else>高</span>
+                    <div class="show-score">
+                        <span class="low-score" v-if="!item.isBetter">低</span>
+                        <span class="high-score" v-else>高</span>
+                    </div>
                     <!-- isbetter用于决定显示登记高低 -->
                 </div>
             </div>
+        </div>
+        <div class="visit-shop">
+            <button>
+                进店逛逛
+            </button>
         </div>
     </div>
 </template>
@@ -38,14 +48,12 @@
                 }
             }
         },
-        created() {
-            console.log(this.shopInfo)
-        }
     }
 </script>
 <style scoped>
     .shop-info{
         padding: 10px 4px;
+        border-bottom: 6px solid #f4f4fb;
     }
     .shop-icon{
         display: flex;
@@ -60,20 +68,36 @@
     .shop-data{
         display: flex;
         align-items: center;
-    }
-    .shop-data .left,
-    .shop-data .right{
-        width: 50%;
-        font-size: 14px;
+        font-size: 12px;
+        padding: 0 4px;
     }
     .shop-data .left{
-        padding: 0 10px;
+        flex: 5;
+    }
+    .shop-data .right{
+        flex: 5;
+    }
+    .shop-data .center{
+        display: block;
+        height: 40px;
+        margin: 0 20px;
+        border-left: 2px solid darkgray;
+    }
+    .shop-data .left{
         display: flex;
         text-align: center;
-        border-right: 3px solid #f2f2f2;
+        font-size: 14px;
     }
-    .shop-data .left>div{
-        flex: 1;
+    .sells{
+        flex: 4;
+        text-align: left;
+    }
+    .goods-num{
+        flex: 6;
+        overflow: hidden;
+    }
+    .goods-num div{
+        float: right;
     }
     .shop-data .right{
         display: flex;
@@ -81,7 +105,24 @@
         align-items: center;
     }
     .shop-score{
+        width: 100%;
         line-height: 1.5em;
+        margin: 2px 0;
+        display: flex;
+    }
+    .shop-score span{
+        flex: 4;
+        text-align: center;
+    }
+    .shop-score span:first-child{
+        text-align: left;
+    }
+    .show-score{
+        flex: 2;
+        overflow: hidden;
+    }
+    .show-score span{
+        float: right;
     }
     .low-score,
     .high-score{
@@ -94,5 +135,18 @@
     }
     .high-score{
         background-color: var(--highlight);
+    }
+    .visit-shop{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 10px 0;
+    }
+    .visit-shop button{
+        width: 40%;
+        border-radius: 8px;
+        border: none;
+        background-color: #f4f4fa;
+        line-height: 2em;
     }
 </style>
