@@ -1,5 +1,5 @@
 <template>
-    <div class="detail-prams" v-if="Object.keys(detailParams) !== 0">
+    <div class="detail-prams" v-if="isLoadOver">
         <div class="size-aboult">
             <table class="table">
                 <tr v-for="(item, index) in detailParams.rule.tables[0]"
@@ -22,6 +22,11 @@
 <script>
  export default {
      name: "DetailParams",
+     data() {
+         return {
+             isLoadOver: false
+         }
+     },
      props: {
          detailParams: {
              type: Object,
@@ -30,13 +35,20 @@
              }
          }
      },
+     watch: {
+         detailParams() {
+             if(Object.keys(this.detailParams).length !==0) {
+                 this.isLoadOver = !this.isLoadOver
+             }
+         }
+     }
  }
 </script>
 <style scoped>
 .detail-prams{
-    padding: 0 6px;
-    padding-top: 20px;
+    padding: 20px 6px;
     font-size: 14px;
+    border-bottom: 6px solid #f4f4fb;
 }
 table,
 tr,

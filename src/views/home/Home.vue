@@ -16,7 +16,7 @@
     class="content" 
     ref="scroll" 
     :scrollMode="3" 
-    @homeScroll="scroll"
+    @areaScroll="scroll"
     @loadImg="loadImg">
       <!-- better-scroll重构项目：（移动端滑动卡顿问题解决方案） -->
       <home-swiper :banners="banners" class="home-swiper" @swipeLoadOver="getOffetTop"></home-swiper>

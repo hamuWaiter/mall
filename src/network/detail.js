@@ -1,4 +1,4 @@
-import {request} from "./request"
+import {request} from "./request.js"
 // 详情页的数据请求
 export function getDetail(iid) {
     return request({
@@ -6,6 +6,13 @@ export function getDetail(iid) {
         params: {
             iid
         }
+    })
+}
+
+// 详情产品推荐数据
+export function getRecommand() {
+    return request({
+        url: "/recommend"
     })
 }
 
@@ -22,7 +29,6 @@ export class GoodsInfo {
         this.realPrice = itemInfo.lowNowPrice
     }
 }
-
 export class Shop {
     constructor(ShopInfo) {
         this.logo = ShopInfo.shopLogo;

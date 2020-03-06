@@ -36,7 +36,7 @@ export default {
 
     this.scroll.on("scroll", position => {
     //   console.log(position);
-        this.$emit("homeScroll",position)
+        this.$emit("areaScroll",position)
         //将滚动过程中的位置参数传给home组件使用，
         // 用于决定回到顶部组件的显示隐藏
     })

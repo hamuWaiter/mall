@@ -44,7 +44,9 @@
             shopInfo: {
                 type: Object,
                 default() {
-                    return {}
+                    return {
+                        isLoadOver: false
+                    }
                 }
             }
         },

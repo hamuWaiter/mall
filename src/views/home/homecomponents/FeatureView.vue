@@ -1,7 +1,7 @@
 <template>
   <div class="feature">
     <a href="https://act.mogujie.com/zzlx67">
-      <img src="~assets/img/homeimg/featureview/feature.png" alt="">
+      <img src="~assets/img/homeimg/featureview/feature.jpg" alt="">
     </a>
   </div>
 </template>

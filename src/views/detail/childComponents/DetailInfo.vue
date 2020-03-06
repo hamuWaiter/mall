@@ -1,5 +1,5 @@
 <template>
-    <div class="detail-info">
+    <div class="detail-info" v-if="isLoadOver">
         <p class="title">{{detailInfo.desc}}</p>
         <div class="images">
             <img v-for="(item, index) in detailInfo.detailImage[0].list"
@@ -12,7 +12,8 @@
         name: "DetailInfo",
         data() {
             return {
-                currentImg: 0
+                currentImg: 0,
+                isLoadOver: false
             }
         },
         props: {
@@ -20,6 +21,13 @@
                 type: Object,
                 default() {
                     return {}
+                }
+            }
+        },
+        watch: {
+         detailInfo() {
+                if(Object.keys(this.detailInfo).length !==0) {
+                    this.isLoadOver = !this.isLoadOver
                 }
             }
         },

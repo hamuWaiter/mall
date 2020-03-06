@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item" @click="itemClick">
       <a href="javascript:;">
-          <img :src="goodsItem.show.img" @load="imgLoadOver">
+          <img :src="imageSrc" @load="imgLoadOver">
       </a>
       <div class="goods-info">
           <p class="title">{{goodsItem.title|filtTitle}}</p>
@@ -11,7 +11,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: "GoodsItem",
   props: {
@@ -22,19 +21,29 @@ export default {
           }
       }
   },
+  computed: {
+    imageSrc() {
+          return this.goodsItem.image || this.goodsItem.show.img
+    },
+  },
   methods: {
       imgLoadOver() {
         //   console.log("loadover");
         // 发射时间到事件总线，进而跨层级在home组件中监听，
         // 再在回调中访问home子组件scroll的new BScroll实例的refresh
         // 方法
-          this.$bus.$emit("curentImgOver");
+        if(this.$route.path.indexOf("home") === 1) {
+            this.$bus.$emit("curentImgOver");
+        }else if(this.$route.path.indexOf("detail") === 1) {
+            this.$bus.$emit("detailImgOver");
+        }
       },
       itemClick() {
         //点击跳转到详情页(并将商品id(对应goodsitem中的iid)
         // 传出去用于发送详情页的数据请求)
-        this.$router.push("/detail/" + this.goodsItem.iid)
-        console.log("click");
+        if(this.goodsItem.iid){
+            this.$router.push("/detail/" + this.goodsItem.iid)
+        }
       }
   },
   filters: {

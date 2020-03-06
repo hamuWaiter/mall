@@ -31,6 +31,8 @@
         methods: {
             itemClick(index) {
                 this.currentIndex = index
+                // 将当前的index传给父组件进行跳转相关操作
+                this.$emit("viewNavItem",this.currentIndex)
             },
             back() {
                 this.$router.back()
